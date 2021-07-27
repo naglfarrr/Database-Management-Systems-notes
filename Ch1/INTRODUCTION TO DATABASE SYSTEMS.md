@@ -6,7 +6,7 @@
 
 现今最广泛使用的数据模型是**关系模型（relational data model）**。
 
-**语义模型（semantic data model）** 是一类更贴近人类直观认识的描述模型，被用于数据库设计阶段。**实体-关系模型（entity-relationship model）（ER）** 是一个被广泛使用的语义模型。
+**语义模型（semantic data model）** 是一类更贴近人类直观认识的描述模型，被用于数据库设计阶段。**实体-联系模型（entity-relationship model）（ER）** 是一个被广泛使用的语义模型。
 
 ### 模式与实例
 
@@ -22,9 +22,7 @@
 
 关系模型中，一个关系的**模式**定义如下：
 
-```
-Students(sid: string, name: string, login: string, age: integer, gpa: real)
-```
+Students(*sid:* `string`, *name:* `string`, *login:* `string`, *age:* `integer`, *gpa:* `real`)
 
 - `Students`是关系的名称；
 - `sid`、`name`...是关系的**域（field）**，又称**属性（attribute）** 或**列（column）**；
@@ -51,11 +49,39 @@ Students关系的一个**实例**如下：
 - **视图层（view level）**：最高层次的抽象，只描述数据库的某个部分。
 
 ```mermaid
-graph TD
-    A[Christmas] -->|Get money| B(Go shopping)
-    B --> C{Let me think}
-    C -->|One| D[Laptop]
-    C -->|Two| E[iPhone]
-    C -->|Three| F[fa:fa-car Car]
+flowchart TD
+	ex1[External Schema1] <--> cs[Conceptual Schema]
+	ex2[External Schema2] <--> cs[Conceptual Schema]
+	ex3[External Schema3] <--> cs[Conceptual Schema]
+	cs <--> ps[Physical Schema]
+	ps <--> d[(DISK)]
 ```
 
+#### 概念模式（conceptual schema）
+
+又称**逻辑模式（logical schema）**，存在于逻辑层。在关系型数据库中，概念模式描述数据库中的所有关系。一个例子如下：
+
+Students(*sid:* `string`, *name:* `string`, *login:* `string`, *age:* `integer`, *gpa:* `real`)
+Faculty(*fid:* `string`, *fname:* `string`, *sal:* `real`)
+Courses(*cid:* `string`, *cname:* `string`, *credits:* `integer`)
+Rooms(*rno:* `integer`, *address:* `string`, *capacity:* `integer`)
+Enrolled(*sid:* `string`, *cid:* `string`, *grade:* `string`)
+Teaches(*fid:* `string`, *cid:* `string`)
+Meets_In(*cid:* `string`, *rno:* `integer`, *time:* `string`)
+
+注意到不论**实体（entity）** 还是**联系（relationship）** 都被描述为一个**关系（relation）**。
+
+#### 物理模式（physical schema）
+
+在16章讨论
+
+#### 外部模式（external schema）
+
+存在于视图层，允许用户用定制化的方式访问他们所需的数据。一个外部模式由一组**视图（view）** 和关系组成。
+视图从概念上讲也是关系，但并不实际存储在数据库中，而是根据定义，由一些关系计算而来。
+
+### 数据独立性(data independence)
+
+DBMS的分层设计能够提供三个层次间的隔离。
+
+视图的使用者不需要关注他使用的视图是怎么计算出来的。如果逻辑模式的设计发生了变化，设计者只需重新设置视图的计算方式
