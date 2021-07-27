@@ -2,11 +2,11 @@
 
 ## 数据的描述和存储
 
-**数据模型（data model）**是一类描述数据顶层架构的模型。它们将数据的底层存储细节隐藏起来。
+**数据模型（data model）** 是一类描述数据顶层架构的模型。它们将数据的底层存储细节隐藏起来。
 
 现今最广泛使用的数据模型是**关系模型（relational data model）**。
 
-**语义模型（semantic data model）**是一类更贴近人类直观认识的描述模型，被用于数据库设计阶段。**实体-关系模型（entity-relationship model）（ER）**是一个被广泛使用的语义模型。
+**语义模型（semantic data model）** 是一类更贴近人类直观认识的描述模型，被用于数据库设计阶段。**实体-关系模型（entity-relationship model）（ER）** 是一个被广泛使用的语义模型。
 
 ### 模式与实例
 
@@ -18,7 +18,7 @@
 
 ### 关系模型
 
-关系模型的核心结构是**关系（relation）**，即**记录（records）**的集合。*一个关系对应一张表，一条记录对应表中的一行。*
+关系模型的核心结构是**关系（relation）**，即**记录（records）** 的集合。*一个关系对应一张表，一条记录对应表中的一行。*
 
 关系模型中，一个关系的**模式**定义如下：
 
@@ -27,7 +27,7 @@ Students(sid: string, name: string, login: string, age: integer, gpa: real)
 ```
 
 - `Students`是关系的名称；
-- `sid`、`name`...是关系的**域（field）**，又称**属性（attribute）**或**列（column）**；
+- `sid`、`name`...是关系的**域（field）**，又称**属性（attribute）** 或**列（column）**；
 - `string`、`integer`、`real`是域的格式。
 
 Students关系的一个**实例**如下：
@@ -40,7 +40,7 @@ Students关系的一个**实例**如下：
 | 53831 | Madayan | madayan@music | 11   | 1.8  |
 | 53832 | Guldu   | guldu@music   | 12   | 2.0  |
 
-对关系施加**完整性约束（integrity constraints）**可以使其更加精确严格。
+对关系施加**完整性约束（integrity constraints）** 可以使其更加精确严格。
 
 ### DBMS的抽象层级
 
